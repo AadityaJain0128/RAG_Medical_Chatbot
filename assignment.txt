@@ -1,0 +1,16 @@
+I have attached the links of the github repository and the live streamlit app.
+
+About the Project :-
+I have used a Medical QA Dataset which includes columns like
+1. Pub ID
+2. Question
+3. Context
+4. Long Answer
+5. Final Decision
+
+About the Project files :-
+The RAG.ipynb file contains the code for building the Retrieval-Augmented Generation pipeline and training the model to answer questions based on the provided dataset.
+
+And the rag.py file contains the code that generates the FAISS vector store from the data.
+
+The app.py file loads the vector store, initializes the retriever and LLM, creates a QA chain using the retriever and LLM and launches a web interface using Streamlit to serve the application on localhost.

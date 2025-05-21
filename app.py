@@ -5,6 +5,7 @@ from langchain.chains import RetrievalQA
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 from os import environ
+from sentence_transformers.util import cos_sim
 
 
 load_dotenv()
@@ -29,15 +30,22 @@ chain = RetrievalQA.from_chain_type(
 
 
 st.title("Medical Health Assistant")
-query = st.text_input("Ask a Question !")
+query = st.text_area("Ask a Question !")
 
 if query:
     with st.spinner("Thinking ..."):
         result = chain.invoke({"query": query})
+
         st.markdown("## Answer:")
         st.write(result["result"])
 
         st.markdown("### Sources:")
         for doc in result["source_documents"]:
-            st.markdown(f"- {doc.page_content[:250]}...")
+            context = doc.page_content
+
+            # Computing cosine similarity between query and context vectors
+            similarity = cos_sim([model.embed_query(query)], [model.embed_query(context)]).item()
+            mp = round(similarity * 100, 2)
+
+            st.markdown(f"- {context[:250]} ...  \n**{mp}% match**")
         st.markdown("> These sources may or may not be related to the answer.")
