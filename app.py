@@ -11,7 +11,7 @@ load_dotenv()
 API_KEY = environ.get("API_KEY")
 
 
-model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2", model_kwargs={"device": "cpu"})
 vectors = FAISS.load_local("vectors", model, allow_dangerous_deserialization=True)
 retriever = vectors.as_retriever(search_kwargs={"k": 3})
 
