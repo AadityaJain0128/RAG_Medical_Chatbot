@@ -1,4 +1,4 @@
-# 🩺 RAG-Based Medical Assistant Chatbot
+# 🩺 RAG-Based Medical Assistance Chatbot
 
 This project is a Retrieval-Augmented Generation (RAG) based chatbot built using **LangChain**, **Groq (LLaMA3)**, and **HuggingFace MiniLM** embeddings. It answers medical-related queries by retrieving contextually relevant information from a pre-embedded knowledge base.
 
