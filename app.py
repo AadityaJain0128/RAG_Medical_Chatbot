@@ -25,7 +25,8 @@ llm = ChatGroq(
 chain = RetrievalQA.from_chain_type(
     llm=llm,
     retriever=retriever,
-    return_source_documents=True
+    return_source_documents=True,
+    chain_type="map_reduce"
 )
 
 
