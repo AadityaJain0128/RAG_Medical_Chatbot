@@ -18,7 +18,7 @@ retriever = vectors.as_retriever(search_kwargs={"k": 3})
 
 llm = ChatGroq(
     api_key=API_KEY,
-    model="llama3-8b-8192",
+    model="llama-3.3-70b-versatile",
     temperature=0
 )
 
